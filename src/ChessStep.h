@@ -19,27 +19,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
-#include <QApplication>
-#include "ChooseMainWindow.h"
+#ifndef CHESSSTEP_H
+#define CHESSSTEP_H
 
-/***
- *  佛曰:
- *          写字楼里写字间，写字间里程序员；
- *          程序人员写程序，又拿程序换酒钱。
- *          酒醒只在网上坐，酒醉还来网下眠；
- *          酒醉酒醒日复日，网上网下年复年。
- *          但愿老死电脑间，不愿鞠躬老板前；
- *          奔驰宝马贵者趣，公交自行程序员。
- *          别人笑我忒疯癫，我笑自己命太贱；
- *          不见满街漂亮妹，哪个归得程序员？
- */
+#include <QObject>
 
-int main(int argc, char *argv[])
+class ChessStep : public QObject
 {
-    QApplication a(argc, argv);
+    Q_OBJECT
+public:
+    explicit ChessStep(QObject *parent = 0);
+    ~ChessStep();
 
-    ChooseMainWindow c;
-    c.show();
+    int m_nMoveID;   // 移动棋子ID
+    int m_nKillID;   // 将要被击杀的棋子ID
+    int m_nRowFrom;  // 原位置的行
+    int m_nColFrom;  // 原位置的列
+    int m_nRowTo;    // 目的位置的行
+    int m_nnColTo;   // 目的位置的列
+};
 
-    return a.exec();
-}
+#endif // CHESSSTEP_H

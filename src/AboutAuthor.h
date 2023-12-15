@@ -19,27 +19,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
-#include <QApplication>
-#include "ChooseMainWindow.h"
+#ifndef ABOUTAUTHOR_H
+#define ABOUTAUTHOR_H
 
-/***
- *  佛曰:
- *          写字楼里写字间，写字间里程序员；
- *          程序人员写程序，又拿程序换酒钱。
- *          酒醒只在网上坐，酒醉还来网下眠；
- *          酒醉酒醒日复日，网上网下年复年。
- *          但愿老死电脑间，不愿鞠躬老板前；
- *          奔驰宝马贵者趣，公交自行程序员。
- *          别人笑我忒疯癫，我笑自己命太贱；
- *          不见满街漂亮妹，哪个归得程序员？
- */
+#include <QDialog>
+#include <QFont>
 
-int main(int argc, char *argv[])
+namespace Ui
 {
-    QApplication a(argc, argv);
-
-    ChooseMainWindow c;
-    c.show();
-
-    return a.exec();
+    class AboutAuthor;
 }
+
+class AboutAuthor : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit AboutAuthor(QWidget* parent = 0);
+    ~AboutAuthor();
+
+protected:
+    virtual void paintEvent(QPaintEvent* event) override;
+
+private:
+    Ui::AboutAuthor* ui;
+};
+
+#endif // ABOUTAUTHOR_H
